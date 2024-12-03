@@ -1,0 +1,72 @@
+﻿<Page x:Class="AutoService.Pages.ServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:AutoService.Pages"
+      Title="ServicePage">
+
+    <Page.Resources>
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#E0F7FA">
+        <StackPanel Orientation="Vertical" Margin="10">
+            <TextBox x:Name="SearchBox" Width="250" TextChanged="SearchBox_TextChanged" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <ComboBox x:Name="SortComboBox" Width="250" HorizontalAlignment="Center" Margin="0,10"
+                      SelectionChanged="SortComboBox_SelectionChanged">
+                <ComboBoxItem Content="Sort by ID" Tag="ID"/>
+                <ComboBoxItem Content="Sort by Title" Tag="Title"/>
+                <ComboBoxItem Content="Sort by Cost" Tag="Cost"/>
+                <ComboBoxItem Content="Sort by Duration" Tag="Duration"/>
+                <ComboBoxItem Content="Sort by Discount" Tag="Discount"/>
+            </ComboBox>
+
+            <DataGrid x:Name="ServiceDataGrid" AutoGenerateColumns="False" SelectionMode="Single" Height="300" 
+                      CanUserSortColumns="True" ItemsSource="{Binding}" Margin="0,10,0,10" SelectionChanged="ServiceDataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+                    <DataGridTextColumn Header="Cost" Binding="{Binding Cost, StringFormat=C}"/>
+                    <DataGridTextColumn Header="Duration (s)" Binding="{Binding DurationInSeconds}"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    <DataGridTextColumn Header="Discount" Binding="{Binding Discount, StringFormat=P}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Content="Add New Service" Style="{StaticResource PrimaryButtonStyle}" Click="AddService_Click"/>
+                <Button Content="Delete" Style="{StaticResource PrimaryButtonStyle}" Click="DeleteService_Click"/>
+                <Button Content="Update" Style="{StaticResource PrimaryButtonStyle}" Click="UpdateService_Click"/>
+                <Button Content="Back to Clients" Style="{StaticResource PrimaryButtonStyle}" Click="BackToClients_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Content="Previous" Style="{StaticResource PrimaryButtonStyle}" Click="PreviousPage_Click"/>
+                <TextBlock x:Name="PageNumberTextBlock" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <Button Content="Next" Style="{StaticResource PrimaryButtonStyle}" Click="NextPage_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

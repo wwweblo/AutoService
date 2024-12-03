@@ -1,0 +1,13 @@
+﻿<Window x:Class="AutoService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoService"
+        mc:Ignorable="d"
+        Title="Autoservise" Height="450" Width="800"
+        Icon="C:\Users\Ярик\Desktop\collage\AutoService\AutoService\AutoService\service_logo.ico">
+    <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

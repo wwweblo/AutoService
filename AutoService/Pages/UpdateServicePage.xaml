@@ -1,0 +1,54 @@
+﻿<Page x:Class="AutoService.Pages.UpdateServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Update Service">
+
+    <Page.Resources>
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="#E0F7FA" Margin="10">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="Update Service" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Title"/>
+            <TextBox x:Name="TitleTextBox" />
+
+            <TextBlock Text="Cost"/>
+            <TextBox x:Name="CostTextBox" />
+
+            <TextBlock Text="Duration (seconds)"/>
+            <TextBox x:Name="DurationTextBox" />
+
+            <TextBlock Text="Description"/>
+            <TextBox x:Name="DescriptionTextBox" />
+
+            <TextBlock Text="Discount"/>
+            <TextBox x:Name="DiscountTextBox" />
+
+            <Button Content="Save" Click="SaveButton_Click" Margin="0,10,0,0" Style="{StaticResource PrimaryButtonStyle}"/>
+            <Button Content="Cancel" Click="CancelButton_Click" Style="{StaticResource PrimaryButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Page>
